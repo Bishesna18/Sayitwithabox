@@ -1,0 +1,78 @@
+.list-product{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:100%;
+    height:740ox;
+    padding:10px 50px;
+    margin:30px;
+    border-radius:6px;
+    background:white;
+}
+.listproduct-remove-icon {
+    width: 20px; /* Adjust size as needed */
+    height: 20px;
+    cursor: pointer; /* Makes it clickable */
+    transition: transform 0.2s ease-in-out; /* Smooth effect */
+
+    /* Optional: Add padding/margin if needed */
+    margin-left: 10px; 
+}
+.listproduct-product-icon {
+    width: 60px; /* Adjust size as needed */
+    height: 60px;
+    object-fit: cover; /* Ensures the image maintains aspect ratio and fills the area */
+    border-radius: 8px; /* Optional: Rounds the corners */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+    margin-right: 10px; /* Space between image and text */
+}
+.listproduct-format-main{
+display:grid;
+grid-template-columns: 1fr 3fr 1fr 1fr 1fr 1fr;
+gap:10px;
+width:100%;
+padding:20px 0px;
+color:#454545;
+font-size: 15px;
+font-weight:600;
+}
+.listproduct-format{
+    align-items: center;
+    font-weight: 500;
+}
+.listproduct-category {
+    max-width: 150px;  /* Limit space */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+    transition: max-width 0.3s ease-in-out;
+}
+
+.listproduct-category:hover {
+    color: darkblue;
+}
+.expanded {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    max-width: 100%;
+}
+@media (max-width:800px) {
+    .list-product{
+        box-sizing:border-box;
+        width:95%;
+        height:100%;
+        padding:10px 30px;
+        margin:20px auto;
+
+    }
+    
+    .listproduct-format-main{
+        padding: 15px 0px;
+        color:#454545;
+        font-size: 12px;
+    }
+}
