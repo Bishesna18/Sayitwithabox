@@ -1,0 +1,453 @@
+@import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700;900&family=Raleway:wght@100;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Junge&display=swap');
+body {
+    overflow-x: hidden;
+}
+.midpage {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centers the content horizontally */
+    padding: 0 5%; /* Adds margin on left and right sides of the screen */
+    flex-direction: column;
+    align-items: center;
+}
+
+.quotation {
+    
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.optbox{
+    display: flex;
+    flex-direction: row; 
+    gap: 55px;
+}
+.options {
+    margin-top: 2%; /* Keeps the top margin */
+    width: 1363px; /* Set width */
+    min-height: 475.28px;
+    background-color: #4a1419;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto; /* Centers it horizontally */
+}
+
+.heading {
+    margin-top: -2%;
+}
+
+.heading p {
+    text-align: center;
+    font-family: "Italiana", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 48px;
+    margin-bottom: 46px; /* Space between heading and the boxes */
+    color: aliceblue;
+}
+.heading2 {
+    margin-top: 4%;
+}
+
+.heading2 p {
+    text-align: center;
+    font-family: "Italiana", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 48px;
+    margin-bottom: 59px; /* Space between heading and the boxes */
+    color: #000000;
+}
+.heading3 {
+    margin-top: 2%;
+}
+
+.heading3 p {
+    text-align: center;
+    font-family: "Italiana", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 28px;
+    margin-bottom: 59px; /* Space between heading and the boxes */
+    color: #000000;
+}
+
+/* Centering the rows and adding gap */
+.row {
+    display: flex;
+    justify-content: center; /* Centers the boxes */
+    width: 100%;
+    gap: 55px; /* 114px gap between boxes */
+}
+
+/* Box styles */
+.box-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers both the box and name */
+}
+
+.first-left, .first-right, .second-left, .second-right {
+    width: 278px;
+    height: 266px;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 27px;
+    position: relative;
+    overflow: hidden; /* Ensures the overlay does not exceed box bounds */
+    transition: border-radius 0.3s ease-in-out;
+}
+
+/* Dark overlay effect on hover */
+.first-left::after, 
+.first-right::after, 
+.second-left::after, 
+.second-right::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0); /* Fully transparent initially */
+    transition: background 0.3s ease-in-out,border-radius 0.3s ease-in-out;
+}
+.first-left:hover, 
+.first-right:hover, 
+.second-left:hover, 
+.second-right:hover {
+    border-radius: 0px; /* Removes border radius on hover */
+}
+/* Dark overlay appears on hover */
+.first-left:hover::after, 
+.first-right:hover::after, 
+.second-left:hover::after, 
+.second-right:hover::after {
+    
+    background: rgba(0, 0, 0, 0.6); /* Darkens the background */
+    border-radius: 0px; 
+}
+
+/* Text inside the box (Initially hidden) */
+.box-text {
+    position: absolute;
+    opacity: 0; /* Hidden initially */
+    font-size: 16px;
+    font-style: italic;
+    color: white;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 2;
+}
+
+/* Show text on hover */
+.first-left:hover .box-text, 
+.first-right:hover .box-text, 
+.second-left:hover .box-text, 
+.second-right:hover .box-text {
+    opacity: 1;
+
+}
+
+
+/* Assign specific images */
+.first-left {
+    background-image: url('../Assets/box4.jpg');
+    border-radius: 27px;
+}
+
+.first-right {
+    background-image: url('../Assets/box1.jpg');
+}
+
+.second-left {
+    background-image: url('../Assets/box3.jpg');
+}
+
+.second-right {
+    background-image: url('../Assets/wine2.jpg');
+}
+
+
+
+/* Name styling */
+.box-name {
+    margin-top: 10px; /* Space between box and name */
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    
+}
+/* .flowers {
+    margin-top: 2%;
+    width: 80%;
+   
+    min-height: 400.28px;
+    background-color: #4a1419;
+    display: flex;
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: center; 
+   
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.imageflower {
+    width: 50%;
+    height: 410px; 
+    background-image: url('../Assets/flower.jpg');
+    background-size: cover;
+    background-position: center right; 
+    background-repeat: no-repeat;
+   
+    position: relative;
+    overflow: hidden;
+    right:-4.25%;
+}
+
+.flowertextarea h1 {
+    font-family: "Italiana", serif;
+    font-size: 50px;
+    width: 93%; 
+    padding: 25px; 
+    margin-top: -39%;
+    color: white; 
+    
+    font-weight: 200;
+} */
+.Subscription {
+    margin-top: 2%;
+    width: 80%;
+    height: 400.28px;
+    background-color: #4a1419;
+    display: flex;
+    align-items: center; /* Center content vertically */
+    justify-content: space-between; /* Ensure both sections take equal space */
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.imagesub {
+    width: 50%;
+    /* Take up equal space */
+    height: 100%; /* Fill parent container */
+    background-image: url('../Assets/subs.jpg');
+    background-size: cover;
+    background-position: center; /* Remove 'right' to center the image */
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.subtextarea {
+    display: flex;
+    flex-direction: column;
+    text-align: justify; /* Justifies text */
+    align-items: flex-end;
+    width: 50%; /* Ensure it doesn't exceed its container */
+    max-width: 90%; /* Limit width within the 50% section */
+    padding: 0 5%; /* Add some padding to keep text inside */
+    box-sizing: border-box; /* Prevent padding from increasing width */
+}
+.subtextarea button{
+    background-color:#fffafa86 ;
+    font-family: "Italiana", serif;
+    transition: 0.3s;
+}
+.subtextarea button:hover{
+    background-color:#19191977 ;
+}
+.subtextarea h1, 
+.subtextarea p {
+    text-align: justify; /* Ensures both are justified */
+    direction: ltr; /* Keeps text flow normal */
+}
+.subtextarea h1 {
+    padding: 25px;
+    margin-top: -20%;
+    font-family: "Italiana", serif;
+    font-size: 50px;
+    color: white;
+    font-weight: 200;
+    text-align: right;
+}
+.subtextarea p {
+    color: aliceblue;
+    margin-top: 10px;
+    font-size: 18px;
+    font-family: "Junge", serif;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.aboutus {
+    margin-top: 5%;
+    width: 100%;
+    min-height: 500.28px;
+    background-color: #7D7664;
+    display: flex;
+    flex-direction: column; /* Arrange content vertically */
+    align-items: center; /* Center content horizontally */
+    justify-content: space-between; /* Spread content vertically */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+.aboutus .heading {
+    margin-top: -2%;
+}
+
+.info {
+    display: flex;
+    flex-direction: row; /* Arrange content in a row */
+    justify-content: space-between; /* Spread content across left and right */
+    align-items: flex-start; /* Align items to the top of the container */
+    width: 100%; /* Full width */
+    position: relative; /* So that we can position .right-pic at the bottom */
+    height: 100%; /* Ensure full height for positioning */
+}
+
+.left-pic {
+   
+    margin-bottom: 10px; /* Keep image at the top */
+    width: 220px; /* Set width */
+    height: 262px; /* Set height */
+    margin-left: 110px; /* Add some space on the left */
+    text-align: left; /* Align image to the left */
+    top: -10px;
+}
+
+
+.left-pic img {
+    width: 100%; /* Make the image fill the container */
+    height: 100%; /* Make the image fill the container */
+    border-radius: 8px; /* Rounded corners */
+}
+
+.middle-info {
+    flex-direction: column;
+    font-family: "Junge", serif;
+    color: white;
+    font-weight: 100;
+    text-align: center;
+    display: flex;
+    justify-content: center; /* Center the text horizontally */
+    align-items: center; /* Center the text vertically */
+    position: absolute; /* Position in the middle */
+    top: 14%; /* Center vertically */
+    left: 49%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for perfect centering */
+}
+.middle-info p{
+    font-size: 18px;
+}
+.about-button {
+    margin-right: -5%;
+    text-align: center; /* Center the button */
+    margin-top: 20px; /* Add some space above the button */
+  }
+  
+  .btn {
+    font-family:"Junge", serif;
+    padding: 10px 20px; /* Add padding for the button */
+    background-color: #3e3d39; /* Button background color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+  }
+  
+  .btn:hover {
+    background-color: #5a4e3f; /* Darker shade on hover */
+  }
+
+.right-pic {
+    margin-top: -174px; /* Pushes the image to the bottom */
+    width: 220px; /* Set width */
+    height: 262px; /* Set height */
+    margin-right: 154px; /* Add some space on the right */
+    text-align: left; /* Align image to the left */
+}
+
+.right-pic img {
+    width: 100%; /* Make the image fill the container */
+    height: 100%; /* Make the image fill the container */
+    border-radius: 8px;
+}
+.flowers {
+    margin-top: 2%;
+    width: 80%;
+    min-height: 400.28px;
+    background-color: #4a1419;
+    display: flex;
+    flex-direction: row; /* Arrange content in a row */
+    align-items: center; /* Vertically center content */
+    justify-content: center; /* Center horizontally */
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden; /* Prevent content from overflowing */
+    box-sizing: border-box; /* Ensure padding and borders don't cause overflow */
+}
+.imageflower{
+    width: 50%; /* Take up half the container */
+    height: 410px; /* Fill the height of the container */
+    background-image: url('../Assets/flower.jpg');
+    background-size: cover;
+    background-position: center right; /* Align image to the right */
+    background-repeat: no-repeat;
+    /* border-radius: 27px; */
+ 
+    overflow: hidden;
+    right:-4.25%;
+}
+.flowertextarea{
+     padding:0 5%;
+     align-items:flex-start;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    font-size: 18px;
+   
+}
+
+.flowertextarea h1 {
+    font-family: "Italiana", serif;
+    font-size: 50px;
+    width: 93%; /* Take up other half of the container */
+    padding: 25px; /* Add some padding around the text */
+    margin-top: -20%;
+    color: white; /* Example: Set text color to white for contrast */
+    /* Add any other text styling you need here */
+    font-weight: 200;
+}
+.flowertextarea button{
+    background-color:#fffafa86 ;
+    font-family: "Italiana", serif;
+    transition: 0.3s;
+}
+.flowertextarea button:hover{
+    background-color:#19191977 ;
+}
+.flowertextarea p{
+    margin-top:0% ;
+    font-family: "Junge", serif;
+    color: aliceblue;
+}

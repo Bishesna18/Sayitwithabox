@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700;900&family=Raleway:wght@100;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Junge&display=swap');
+
+.Option{
+    width: 100%;
+    height:400px;
+ display:flex;
+ justify-content: center;
+ flex-direction: column;
+ align-items: center; 
+ text-align: center;
+}
+.opt-title-category h1{
+    font-family:  "Italiana", serif;
+   font-weight: 400;
+   color: #3B1518;
+}
+.opt-title-category{
+    height:120px;
+    padding: 2px;
+    
+}
+.opt-title-category p{
+    margin-top: -5%;
+    
+}
+.circle-opt-whole{
+    display: flex;
+    height: 50%;
+      width:80%;
+      background-color: white;
+      justify-content: center;
+      align-items: center;
+     
+}
+ .opt-box {
+        width: 142px;  /* Adjust the width */
+        height: 160px; /* Adjust the height */
+        background-color: white;
+        border-radius: 10px;  /* Rounded corners */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column; 
+       
+        /* box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); Optional: Adds shadow */
+        margin: 10px; /* Adds spacing between boxes */ 
+}
+.first-layer-circle{
+    width: 124px;  /* Adjust size */
+    height: 132px; /* Keep width and height equal for a perfect circle */
+    border: 1px solid #6c6c6c;  /* Outline with desired color */
+    border-radius: 50%;  /* Makes it a circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 0%;
+}
+.second-layer-circle{
+    width: 110px;  /* Slightly smaller than first-layer-circle */
+    height: 110px;
+    border: 2px solid #6c6c6c2c;  
+    border-radius: 50%;
+    background-color: white;  
+    margin:2%;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.opt-box-image {
+    width: 100%; /* Make the image fit within the circle */
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover; /* Make sure the image is properly cropped */
+  }
+  .opt-box-image:hover{
+    filter: brightness(50%); /* Darkens the image */
+    transition: 0.3s ease-in-out; /* Smooth effect */
+  }
+.opt-box-title{
+    margin-top: 5px; /* Reduced spacing */
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+    font-family: "Raleway", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    height: 20%;
+}
+.record-opt{
+    height: auto;
+    width: 55%;
+    background-color: white; /* Softer color instead of dark gray */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px;
+    gap:10px;
+   margin-left: -9%;
+}
+.records{
+    height: 18px; /* Same height */
+    width: auto; /* Same width */
+    background-color: #3B1518; /* Slightly different background color */
+    display: flex;
+    justify-content: space-evenly; /* Different spacing */
+    align-items: center;
+    border-radius: 12px; /* Slightly more rounded corners */
+    padding: 8px 12px; 
+    border: 2px solid #6A2C31; /* Light border to add contrast */
+    white-space: nowrap; 
+}
+.listrecord-remove-icon{
+        margin-left: 8px;
+        width: 14px; /* Adjust size as needed */
+        height: 16px;
+        cursor: pointer; /* Makes it clickable */
+        transition: transform 0.2s ease-in-out; /* Smooth effect */
+    
+        /* Optional: Add padding/margin if needed */
+        margin-left: 34px; 
+    
+}
+.records p{
+    margin: 0;
+    padding: 0;
+    color: aliceblue;
+}
+.listrecord-remove-icon {
+    filter: brightness(0) invert(1); /* Makes the image white */
+    transition: filter 0.3s ease;
+  }
+  
+  .clear-all-btn {
+    background-color: #ffffff; /* Red background */
+    color: rgb(239, 127, 102);
+    border: none;
+    padding: 8px 16px;
+   
+    border-radius: 5px;
+    cursor: pointer;
+    height: fit-content;
+    transition: background-color 0.3s ease;
+  }
+  
+  .clear-all-btn:hover {
+    background-color: #ee8484; /* Darker red on hover */
+    color: white;
+  }

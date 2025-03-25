@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Poppins:wght@300;400&display=swap');
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('../Assets/font/myfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f8f6;
+    color: #333;
+}
+
+.our-story {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.title {
+    font-family: 'Playfair Display', serif;
+    /* font-family: 'MyCustomFont'; */
+    font-size: 2.5rem;
+    font-style: italic;
+}
+
+.intro-text {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 400px;
+    width: 400px;
+    
+}
+.intro-text h2{
+    margin-left: -37%;
+}
+h2{
+    font-family: 'MyCustomFont';
+    font-weight: 100;
+    font-size: 48px;
+}
+h3{
+    font-family: 'MyCustomFont';
+    font-weight: 100;
+    font-size: 32px;
+    text-align: center;
+    
+}
+.highlighted-text {
+    color: black;
+    font-family: "Junge", serif;
+    font-size: 23px;
+    text-align: left;
+    margin-left: -27%;
+}
+.overlay-text p{
+    padding: 6%;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    padding: 40px 10%;
+    position: relative;
+}
+
+.image-box {
+    position: relative;
+}
+
+.image-box img {
+    width: 340px;
+    height: 365px;
+  
+    display: block;
+}
+.watch{
+    margin-top: 4%;
+    margin-left: 8%;
+    width:461px;
+    height:496px;
+}
+.image-box watchimg{
+    width:461px;
+    height:496px;
+}
+.watchimg img{
+    width:461px;
+    height:496px;
+}
+.bracelet img{
+    width: 479px;
+    height: 470px;
+}
+.bracelet-img{
+    margin-left: 26%;
+    margin-top: 6%;
+}
+
+.overlay-text {
+    /* position: absolute; */
+    margin-top: -15%;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    padding: 10px;
+    border-radius: 0;
+    font-size: 1rem;
+    text-align: left;
+    max-width: 98%;
+    font-family: "Junge", serif;
+    width: 575px;
+    height: 562px;
+    text-align: right;
+    padding: 6%;
+}
+
+.light {
+    background-color:#D2C9C0;
+    color:#4A1419 ;
+    margin-top: -1%;
+    width: 562pxpx;
+    height: 430px;
+    text-align: left;
+}
+.dark{
+   margin-left: -58.5px;
+}
+.quote-box {
+   
+    background-color: #561C1C;
+    color: white;
+    padding: 50px;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-top: -7%;
+    grid-column: span 2;
+    height: 300px;
+}
+
+.footer-text {
+    font-size: 1rem;
+    margin-top: 30px;
+    padding: 20px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.necklace {
+    margin-top: -13%;
+    margin-left: -1%;
+     
+}
+.necklace img{
+    width: 479px;
+    height: 470px;
+
+}

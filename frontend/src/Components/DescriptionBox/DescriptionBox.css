@@ -1,0 +1,44 @@
+.descriptionbox{
+ margin-top: 20px;   
+}
+.descriptionbox-navigator{
+    display: flex;
+    gap: 30px;
+    justify-content:space-around ;
+    justify-content: space-around;
+    position: relative; /* Ensure relative positioning for absolute child */
+    
+
+}
+.description-nav-box{
+    color:#6A2C31;
+    display: flex;
+    align-items: center;
+    margin-top: 2px;
+    /* justify-content:center ; */
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+
+ 
+}
+/* Moving Indicator */
+.indicator {
+    position: absolute;
+    bottom: -21px;
+    width: 50%;
+    height: 3px;
+    background-color: #6A2C31; /* Matching text color for consistency */
+    transition: left 0.3s ease-in-out;
+}
+.static-line {
+    width: 100%;
+    height: 2px;
+    background-color: #ddd; /* Light grey */
+    margin-top: 20px;
+  }
+  .descriptionbox-description p{
+    font-size: 14px; /* Smaller text size */
+    color: #363636; /* Slightly lighter color */
+    text-align: justify;
+  }
