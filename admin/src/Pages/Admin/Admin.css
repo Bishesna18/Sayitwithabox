@@ -1,0 +1,15 @@
+.admin{
+    display:flex;
+
+}
+.admin-content {
+    margin-left: 0px; /* This should match the sidebar width */
+    padding: 20px;
+    width: calc(100% - 80px); /* Adjust to take up the remaining space */
+    background-color: #f9f9f9; /* Light background for the content area */
+  }
+  @media(max-width:800px){
+    .admin{
+       flex-direction:column; 
+    }
+  }

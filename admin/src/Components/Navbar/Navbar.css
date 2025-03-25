@@ -1,0 +1,32 @@
+.navbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:15px 60px;
+    box-shadow:0 1px 3px -2px #000;
+    margin-bottom:1px;
+    background:white;
+}
+.nav-logo {
+    width: 120px;  /* Adjust logo width */
+    height: auto;  /* Maintain aspect ratio */
+}
+.nav-profile {
+    width: 40px;  /* Adjust width */
+    height: 40px; /* Adjust height */
+    border-radius: 50%; /* Optional: Makes it circular */
+    object-fit: cover; /* Ensures the image scales properly */
+}
+@media(max-width:800px){
+    .navbar{
+        padding:15px 30px;
+
+    }
+    .nav-logo{
+        width:90px;
+    }
+    .nav-profile{
+       width: 30px;
+       height:30px; 
+    }
+}
