@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext, useEffect,useState } from 'react';
 import './Relatedproduct.css'
-import data_product from '../Assets/all_product'
+
+// import data_product from '../Assets/all_product'
+import { ShopContext } from '../../Context/ShopContext';
 import Item from '../Items/Item'
 
 const Relatedproduct = ({ currentCategories, currentProductId }) => {
+  const { all_product } = useContext(ShopContext);
     if (!currentCategories || currentCategories.length === 0) {
       console.error("No categories provided for related products.");
       return null; // Don't render if there's an issue
@@ -13,7 +16,7 @@ const Relatedproduct = ({ currentCategories, currentProductId }) => {
     console.log("Current Product ID (to exclude):", currentProductId);
   
     // Filter products: Check if at least one category matches & exclude current product
-    const relatedProducts = data_product
+    const relatedProducts = all_product
       .filter(item => 
         item.id !== currentProductId && 
         item.category.some(cat => currentCategories.includes(cat)) // <-- Fix

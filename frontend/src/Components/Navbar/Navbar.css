@@ -54,7 +54,7 @@
  /* Positioning on the right */
   width: 25px;
   height: 25px;
-  pointer-events: none; /* Prevents the icon from blocking input interactions */
+  pointer-events: auto; /* Prevents the icon from blocking input interactions */
   opacity: 0.6; /* Slightly transparent for better UI */ }
   .location-icon {
 

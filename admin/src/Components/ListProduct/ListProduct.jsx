@@ -1,14 +1,25 @@
 import React,{useEffect, useState} from 'react'
-
+import { toast } from 'react-toastify'
 import'./ListProduct.css'
+import axios from 'axios'
 import cross_icon from '../../assets/cross.svg'
-const ListProduct = () => {
+const ListProduct = ({token}) => {
   const [expandedIndex, setExpandedIndex] = useState(null);
-  const [allproducts,setAllProducts]=useState([]);
+  const [list,setList]=useState([]);
+  
   const fetchInfo=async()=>{
-    await fetch('http://localhost:4000/allproducts')
-    .then((res)=>res.json())
-    .then((data)=>{setAllProducts(data)});
+    try{
+    const response=await axios.get('http://localhost:4000/api/product/list')
+    if (response.data.success){
+      setList(response.data.products);
+    }
+    else{
+      toast.error(response.data.message)
+    }
+    }catch(error){
+      console.log(error);
+      toast.error(error.message)
+    }
   }
   useEffect(()=>{
     fetchInfo();
@@ -17,15 +28,20 @@ const ListProduct = () => {
 
     const isConfirmed = window.confirm("Are you sure you want to delete this product?");
     if (isConfirmed){
-    await fetch('http://localhost:4000/removeproduct',{
-      method:'POST',
-      headers:{
-        Accept:'application/json',
-        'Content-Type':'application/json',
-      },
-      body:JSON.stringify({id:id})
-    })
-    await fetchInfo();
+   try {
+    const response=await axios.post("http://localhost:4000/api/product/remove",{id},{headers:{token}})
+    if(response.data.success){
+      
+      toast.success(response.data.message)
+      await fetchInfo();
+    }
+    else{
+      toast.error(response.data.message)
+    }
+   } catch (error) {
+    console.log(error)
+    toast.error(error.message)
+   }
   }
 };
   const toggleCategory = (productID) => {
@@ -44,13 +60,13 @@ const ListProduct = () => {
       </div>
       <div className="listproduct-allproduct">
       
-        {allproducts.map((product)=>{
+        {list.map((product)=>{
           const isExpanded=expandedIndex===product.id;
          return (<div key={product.id} ><div className="listproduct-format-main listproduct-format">
-       <img src={product.image} alt="" className="listproduct-product-icon" />
+       <img src={product.image[0]} alt="" className="listproduct-product-icon" />
        <p>{product.name}</p>
-       <p>${product.old_price}</p>
-       <p>${product.new_price}</p>
+       <p>Rs{product.old_price}</p>
+       <p>Rs{product.new_price}</p>
       
        <p className={`listproduct-category ${isExpanded ? 'expanded' : ''}`} onClick={() => toggleCategory(product.id)}>
                   {Array.isArray(product.category)
@@ -59,7 +75,7 @@ const ListProduct = () => {
                       : product.category.slice(0, 2).join(", ") + (product.category.length > 2 ? " ..." : "")
                     : product.category}
                 </p>
-       <img onClick={()=>{remove_product(product.id)}}className='listproduct-remove-icon' src={cross_icon} alt="" />
+       <img onClick={()=>{remove_product(product._id)}}className='listproduct-remove-icon' src={cross_icon} alt="" />
        </div>
        <hr/>
       </div>

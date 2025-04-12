@@ -9,6 +9,8 @@ import ShopCategory from './Pages/ShopCategory';
 import ForgotPassword from './Pages/ForgotPassword';
 import ResetPassword from './Pages/ResetPassword';
 import Aboutus from './Pages/Aboutus';
+import PlaceOrder from './Pages/PlaceOrder';
+import SearchBar from './Components/SearchBar/SearchBar'
 function App() {
   return (
     <BrowserRouter>
@@ -24,6 +26,7 @@ function AppContent() {
   return (
     <div>
       {!hideNavbarRoutes.includes(location.pathname) && <Navbar />}
+    <SearchBar/>
       <Routes>
         <Route path='/' element={<Gift />} />
         <Route path='/Byperson' element={<ShopCategory category="ByPerson" />} />
@@ -37,6 +40,7 @@ function AppContent() {
         <Route path='/login' element={<LoginSignup />} />
         <Route path='/Aboutus' element={<Aboutus/>} />
         <Route path='/forgot-Password' element={<ForgotPassword/>} />
+        <Route path='/cart/place-order' element={<PlaceOrder/>} />
         <Route path='/reset-password/:token' element={<ResetPassword/>} />
       </Routes>
     </div>

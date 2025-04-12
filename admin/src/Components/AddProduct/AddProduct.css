@@ -13,18 +13,42 @@
     color:#323232;
     font-size: 16px;
   }
+  .image-upload{
+    gap:5px;
+    display: flex;
+    flex-direction: row;
+  }
+  .image-upload .addproduct-itemfield{
+    width:18%;
+  }
+  .addproduct-itemfield textarea{
+    width: 100%;
+  max-width: 600px;
+  height: 150px;
+  padding: 10px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
   .addproduct-itemfield input{
     box-sizing:border-box;
     width:100%;
     height:50px;
     border-radius:4px;
     padding-left: 15px;
-    border:1px solid #797979;
+    border:1px solid 9;
     color: #5f5f5f;
     font-family: 'raleway';
     font-size: 14px;
+    
   }
-  
+  .image-upload label[for='file-input']{
+    border:1px solid rgb(123, 123, 123);
+  }
   .addproduct-itemfield label {
     margin:20px 0px;
     display: flex;
@@ -33,10 +57,15 @@
     width: 120px;  /* Adjust as needed */
     height: 120px; /* Adjust as needed */
   
-    border-radius: 8px; /* Rounded edges */
+    /* Rounded edges */
     cursor: pointer;
     background-color: #f9f9f9;
   }
+  .addproduct-thumbnail-image[src*="addpic2.png"] {
+    width: 51px;  /* Adjust as needed */
+    height: 51px; /* Adjust as needed */
+   
+}
   .addproduct-price{
     display:flex;
     gap:40px;
@@ -44,7 +73,7 @@
   .addproduct-thumbnail-image{
     height:120px;
     width:120px;
-    border-radius: 10px;
+    
     object-fit: contain;
     margin:10px 0px;
   }

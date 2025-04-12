@@ -2,7 +2,12 @@ import React from 'react';
 import './Midpage.css';
 import abus1 from "../Assets/abus1.jpg";
 import abus2 from "../Assets/abus2.jpg";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 const Midpage = () => {
+  const navigate = useNavigate();
+const [menu, setMenu] = useState(""); 
+
   return (
     <div className='Midpage'>
 
@@ -22,33 +27,70 @@ const Midpage = () => {
 <div className="optbox">
         {/* <div className="row"> */}
           <div className="box-container">
-            <div className="first-left">
+            <div className="first-left"
+            onClick={() => {
+              setMenu("Occasion");
+              navigate("/Occasion");
+            }}
+            style={{ cursor: "pointer" }}>
             <p className="box-text">"Some moments deserve more than just words—make them unforgettable with the perfect gift."</p>
             </div>
-            <p className="box-name">Occasion &gt;</p>
+            <p className="box-name"onClick={() => {
+            setMenu("Occasion");
+            navigate("/Occasion");
+          }}
+          style={{ cursor: "pointer" }} >Occasion &gt;
+            {menu === "Occasion" && <hr />}
+            </p>
           </div>
 
           <div className="box-container">
-            <div className="first-right">
+            <div className="first-right"
+            onClick={() => {
+              setMenu("By Person");
+              navigate("/Byperson");
+            }}
+            style={{ cursor: "pointer" }}>
             <p className="box-text">"Every bond is unique. Find a gift that speaks their love language."</p>
             </div>
-            <p className="box-name">By person &gt;</p>
+            <p className="box-name" onClick={() => {
+            setMenu("By Person");
+            navigate("/Byperson");
+          }}
+          style={{ cursor: "pointer" }}>By person &gt;</p>
           </div>
         {/* </div> */}
 
         {/* <div className="row"> */}
           <div className="box-container">
-            <div className="second-left">
+            <div className="second-left"
+             onClick={() => {
+              setMenu("By Personality");
+              navigate("/Bypersonality");
+            }}>
             <p className="box-text">"Gifts should match the soul—thoughtful, bold, or full of charm, just like them."</p>
             </div>
-            <p className="box-name">By personality &gt;</p>
+            <p className="box-name" onClick={() => {
+            setMenu("By Personality");
+            navigate("/Bypersonality");
+          }}
+          style={{ cursor: "pointer" }}>By personality &gt;</p>
           </div>
 
           <div className="box-container">
-            <div className="second-right">
+            <div className="second-right"
+             onClick={() => {
+              setMenu("Chocolate & Drinks");
+              navigate("/Chocolates");
+            }}>
             <p className="box-text">"Sweeten their day with chocolates or raise a toast to love and laughter."v</p>
             </div>
-            <p className="box-name">Chocolate&Drinks &gt;</p>
+            <p className="box-name"
+            onClick={() => {
+              setMenu("Chocolate & Drinks");
+              navigate("/Chocolates");
+            }}
+            style={{ cursor: "pointer" }}>Chocolate&Drinks &gt;</p>
           </div>
         {/* </div> */}
       </div>
