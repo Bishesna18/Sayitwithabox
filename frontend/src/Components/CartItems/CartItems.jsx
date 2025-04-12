@@ -3,9 +3,10 @@ import './CartItems.css'
 
 import remove_icon from '../Assets/close.png'
 import {ShopContext} from '../../Context/ShopContext'
+import { useNavigate } from 'react-router-dom'
 const CartItems = () => {
     const{all_product,getTotalCartAmount,cartItems,removeFromCart,updateCartQuantity }=useContext(ShopContext);
-
+    const navigate = useNavigate();
   return (
     
     <div className='cartitems'>
@@ -17,9 +18,10 @@ const CartItems = () => {
       {all_product.map((e)=>{
         if(cartItems[e.id]>0)
         {
-            return <div>
+            return( <div key={e.id}>
+              
             <div className="cartitems-format-main cartitems-format">
-           <img src={e.image} alt="" className='carticon-product-icon'/>
+           <img src={e.image[0]} alt="" className='carticon-product-icon'/>
            <div className="info-items">
            <p className='name-cart-item'>{e.name}</p>
            <p className='price-cart-item'>Per price: Rs.{e.new_price}</p>
@@ -64,6 +66,7 @@ const CartItems = () => {
             <hr className="second-hr"/>
             
           </div>
+            )
         }
         return null;
       })}
@@ -80,7 +83,7 @@ const CartItems = () => {
                
                 <div className="cartitems-total-items">
                     <p>Estimated Shipping</p>
-                    <p>Rs.</p>
+                    <p>Rs.100</p>
                 </div>
                 <hr />
                <div className="cartitems-total-items">
@@ -97,7 +100,7 @@ const CartItems = () => {
             <button>Apply</button>
         </div>
       </div>
-      <button className='checkout'>Proceed To Checkout</button>
+      <button onClick={()=>navigate('./place-order')}className='checkout'>Proceed To Checkout</button>
       </div>
     </div>
     </div>

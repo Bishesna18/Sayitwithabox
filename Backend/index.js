@@ -13,9 +13,10 @@ import {connectDB} from './db/connectDB.js';
 import authRoutes from "./routes/auth.route.js";
 import productRoute from "./routes/productRoute.js";
 import connectCloudinary from './config/cloudinary.js';
+import cartRouter from './routes/cart.route.js';
 const app=express();
 app.use(express.json());
-app.use(cors({ origin:  ["http://localhost:3000", "http://localhost:5173"]  })); // Specify the frontend URL
+app.use(cors({ origin:  ["http://localhost:3000", "http://localhost:5174"]  })); // Specify the frontend URL
 
 
 //database connection with mdb:
@@ -28,8 +29,10 @@ app.use(cors({ origin:  ["http://localhost:3000", "http://localhost:5173"]  }));
 app.get("/",(req,res)=>{
     res.send("Express App is Running")
 });
+
 app.use('/api/auth',authRoutes)
 app.use('/api/product',productRoute)
+app.use('/api/cart',cartRouter)
 app.listen(port,(error)=>{
     if(!error){
         connectDB();

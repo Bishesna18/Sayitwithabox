@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 import './AddProduct.css';
-import upload_area from '../../assets/upload/photo.svg'
-
-
-
+import upload_area from '../../assets/upload/addpic2.png'
+import axios from 'axios'
+import { backendUrl } from '../../App';
 const categoryOptions = [
   { value:"Birthday",label:"Birthday"},
   { value:"Anniversary",label:"Anniversary"},
@@ -34,7 +33,13 @@ const categoryOptions = [
 ];
 
 const AddProduct = () => {
+  
+  const [image1,setImage1]=useState(false)
+  const [image2,setImage2]=useState(false)
+  const [image3,setImage3]=useState(false)
+  const [image4,setImage4]=useState(false)
   const [selectedCategories, setSelectedCategories] = useState([]);
+  // const [description,setDescription]=useState("");
   const [productDetails,setProductDetails]=useState({
     name:"",
     image:"",
@@ -42,48 +47,38 @@ const AddProduct = () => {
     new_price:"",
     old_price:""
   })
-  const[image,setImage]=useState(false);
-  const imageHandler=(e)=>{
-      setImage(e.target.files[0]);
-  
-  }
+ 
   const changeHandler=(e)=>{
     setProductDetails({...productDetails,[e.target.name]:e.target.value})
   }
   const Add_product=async()=>{
-    console.log(productDetails);
-    let responseData;
-    let product=productDetails;
+ 
+  console.log(productDetails);
+  let product = { ...productDetails }; // Clone product details
+try{
+  // Step 1: Upload images along with product details
+  let formData = new FormData();
+  if (image1) formData.append("image1", image1);
+  if (image2) formData.append("image2", image2);
+  if (image3) formData.append("image3", image3);
+  if (image4) formData.append("image4", image4);
+  
+  formData.append("name", productDetails.name);
+  formData.append("new_price", productDetails.new_price);
+  formData.append("old_price", productDetails.old_price);
+  formData.append("category",productDetails.category); // Convert array to JSON string
+  formData.append("description", productDetails.description); 
+ const response=await axios.post("http://localhost:4000/api/product/add",formData)
+ console.log(response.data)
 
-    let formData=new FormData();
-    formData.append('product',image);
-
-    await fetch('http://localhost:4000/upload',{
-      method:'POST',
-      headers:{
-        Accept:'application/json',
-      },
-      body:formData,
-    }).then((resp)=>resp.json()).then((data)=>{responseData=data});
-
-    if(responseData.success)
-    {
-      product.image=responseData.image_url;
-      console.log(product);
-      await fetch('http://localhost:4000/addproduct',{
-        method:'POST',
-        headers:{
-          Accept:'application/json',
-          'Content-Type':'application/json',
-        },
-        body:JSON.stringify(product),
-      }).then((resp)=>resp.json()).then((data)=>{
-        data.success?alert("Product Added"):alert("Failed")
-      })
-    }
+  } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong");
+  }
   }
   
   return (
+    <form className='add'>
     <div className='add-product'>
       <div className="addproduct-itemfield">
         <p>Product Title</p>
@@ -108,10 +103,13 @@ const AddProduct = () => {
   isMulti
   value={selectedCategories}
   onChange={(options) => {
+    console.log("Selected Categories: ", options);
+
     setSelectedCategories(options); // Update state with selected options
     setProductDetails((prev) => ({
       ...prev,
       category: options ? options.map((opt) => opt.value) : [], // Store selected values in productDetails
+      
     }));
   }}
   className="add-product-selector"
@@ -119,13 +117,40 @@ const AddProduct = () => {
 />
       </div>
       <div className="addproduct-itemfield">
-        <label htmlFor="file-input">
-<img src={image?URL.createObjectURL(image):upload_area} className='addproduct-thumbnail-image'alt="" />
+        <p>Description</p>
+        <textarea value={productDetails.description} onChange={changeHandler} type="text" name="description" placeholder="content here"/>
+
+      </div>
+      <p>Upload image</p>
+      <div className="image-upload">
+      <div className="addproduct-itemfield">
+        <label htmlFor="file-input1">
+<img src={image1?URL.createObjectURL(image1):upload_area} className='addproduct-thumbnail-image'alt="" />
         </label>
-        <input onChange={imageHandler} type="file" name='image' id='file-input' hidden/>
+        <input onChange={(e)=>setImage1(e.target.files[0])} type="file" name='image' id='file-input1' hidden/>
+      </div>
+      <div className="addproduct-itemfield">
+        <label htmlFor="file-input2">
+<img src={image2?URL.createObjectURL(image2):upload_area} className='addproduct-thumbnail-image'alt="" />
+        </label>
+        <input onChange ={(e)=>setImage2(e.target.files[0])} type="file" name='image' id='file-input2' hidden/>
+      </div>
+      <div className="addproduct-itemfield">
+        <label htmlFor="file-input3">
+<img src={image3?URL.createObjectURL(image3):upload_area} className='addproduct-thumbnail-image'alt="" />
+        </label>
+        <input onChange={(e)=>setImage3(e.target.files[0])} type="file" name='image' id='file-input3' hidden/>
+      </div>
+      <div className="addproduct-itemfield">
+        <label htmlFor="file-input4">
+<img src={image4?URL.createObjectURL(image4):upload_area} className='addproduct-thumbnail-image'alt="" />
+        </label>
+        <input onChange={(e)=>setImage4(e.target.files[0])} type="file" name='image' id='file-input4' hidden/>
+      </div>
       </div>
       <button onClick={()=>{Add_product()}} className='addproduct-btn'>ADD</button>
     </div>
+    </form>
   );
 };
 

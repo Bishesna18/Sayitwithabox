@@ -1,0 +1,34 @@
+.outer-form-place-order{
+    margin:5px;
+    min-height: 80vh;
+    border-top: 2px;
+    gap:8px;
+    display: flex;
+    padding: 45px 187px;
+}
+.layer-2-placeorder{
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+    width: 550px;
+}
+.name{
+    display: flex;
+    gap: 24px;
+}
+
+.Field{
+    border:rgb(194, 194, 194) solid 2px;
+  
+    justify-content: space-around;
+    height: 49px;
+}
+.Name{
+    width: 50%;
+}
+h1{
+    
+    font-family:  "Italiana", serif;
+    font-weight: 400;
+    color: #3B1518;
+}

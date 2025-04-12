@@ -10,6 +10,8 @@ import "./Navbar.css";
 
 const Navbar = () => {
   const [menu, setMenu] = useState("Gifts");
+  const [visible,setVisible]=useState(false)
+  const{setShowSearch}=useContext(ShopContext)
   const {getTotalCartItems}=useContext(ShopContext)
   return (
     <header className="navbar">
@@ -17,7 +19,7 @@ const Navbar = () => {
       <div className="nav-top">
       <div className="search-container">
         {/* <input type="text" className="nav-search" placeholder="Search..." /> */}
-        <img src={logos} alt="Search" className="search-icon" />
+        <img onClick={()=>{ setShowSearch(true); console.log('Search icon clicked!'); }} src={logos} alt="Search" className="search-icon" />
         <img src={location} alt="Search" className="location-icon" />
        
         </div>

@@ -1,9 +1,10 @@
 import {v2 as cloudinary} from 'cloudinary'
 import Product from '../models/productModel.js'
-
+import mongoose from "mongoose";
+import { v4 as uuidv4 } from 'uuid';
 const addProduct=async(req,res)=>{
    try {
-   const{ product_id,name,category, description,tags, personalization_options, occasion, new_price, old_price, available, rating, sold_count, delivery_time}=req.body
+   const{name,category, description,tags, personalization_options, occasion, new_price, old_price, available, rating, sold_count, delivery_time}=req.body
    const image1=req.files.image1 && req.files.image1[0]
    const image2=req.files.image2 && req.files.image2[0]
    const image3=req.files.image3 && req.files.image3[0]
@@ -15,30 +16,33 @@ const addProduct=async(req,res)=>{
          return result.secure_url
       })
    )
-   let id;
+   const finalCategory = typeof category === 'string' ? category.split(',') : category; 
+   console.log("Processed Category:", finalCategory);
 const products = await Product.find(); // Find all products to get the last product's id
+let id;
 if (products.length > 0) {
-   let last_product = products[products.length - 1]; // Get the last product
-   id = last_product.id + 1; // Increment the id of the last product
+  let last_product = products[products.length - 1]; // Get the last product
+  id = last_product.id + 1; // Increment the id of the last product
 } else {
-   id = 1; // If no products exist, start with id 1
+  id = 1; // If no products exist, start with id 1
 }
+id = parseInt(id);
   const productData={
-   product_id,
+   id:id,
    name,
    description,
-   category:Array.isArray(category) ? category : [category],
+   category:finalCategory, 
    new_price,
    old_price,
    tags:Array.isArray(tags) ? tags : [tags],
    image:imagesUrl,
    date:Date.now(),
-   available:available==="true", 
+   available:available !== undefined ? (available.toLowerCase() === "true" ) : true, 
    rating:parseFloat(rating)||0, 
    sold_count:parseInt(sold_count)||0,
    delivery_time,
    personalization_options,
-    occasion
+  occasion
   }
  console.log(productData)
  const product= new Product(productData)
