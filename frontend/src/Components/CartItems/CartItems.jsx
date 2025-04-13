@@ -4,6 +4,7 @@ import './CartItems.css'
 import remove_icon from '../Assets/close.png'
 import {ShopContext} from '../../Context/ShopContext'
 import { useNavigate } from 'react-router-dom'
+import CartitemTotal from './CartitemTotal'
 const CartItems = () => {
     const{all_product,getTotalCartAmount,cartItems,removeFromCart,updateCartQuantity }=useContext(ShopContext);
     const navigate = useNavigate();
@@ -73,7 +74,8 @@ const CartItems = () => {
       </div>
       <div className='right-cart'>
       <div className="cartitems-down">
-        <div className="cartitems-totals">
+        <CartitemTotal  totalAmount={getTotalCartAmount()}/>
+        {/* <div className="cartitems-totals">
         <div className='title-cart'>Cart total</div>
             <div>
                 <div className="cartitems-total-items">
@@ -92,7 +94,7 @@ const CartItems = () => {
             </div>
         </div>
        
-      </div>
+      </div> */}
       <div className="cartitems-promocode">
         <p>If you have a promocode enter it here</p>
         <div className="cartitems-promobox">

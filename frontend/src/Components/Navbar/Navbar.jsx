@@ -1,4 +1,4 @@
-import React, { useState,useContext } from "react";
+import React, { useState,useContext,useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../Assets/logo2.png";
 import logos from "../Assets/search1.png"
@@ -9,6 +9,29 @@ import {ShopContext} from '../../Context/ShopContext'
 import "./Navbar.css";
 
 const Navbar = () => {
+  const authToken = localStorage.getItem("auth-token");
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false); // State to toggle dropdown visibility
+ 
+  const handleDropdownToggle = () => {
+    setIsDropdownVisible((prevState) => !prevState); // Toggle dropdown visibility
+  };
+  useEffect(() => {
+    // Fetch the auth token from localStorage when the component mounts
+    const authToken = localStorage.getItem("auth-token");
+
+    // Display the auth token in the console
+    if (authToken) {
+      console.log("Auth Token:", authToken);
+    } else {
+      console.log("No auth token found.");
+    }
+  }, []); 
+  const handleLogout = () => {
+    // Clear auth token from local storage
+    localStorage.removeItem("authToken");
+    // Optionally, redirect to login page after logout
+    window.location.href = "/login";
+  };
   const [menu, setMenu] = useState("Gifts");
   const [visible,setVisible]=useState(false)
   const{setShowSearch}=useContext(ShopContext)
@@ -27,10 +50,28 @@ const Navbar = () => {
           <img src={logo} alt="Logo" />
         </div>
         <div className="nav-login-cart">
-          <Link to="/login">
-          <img src={login_icon} alt="Cart" />
-          
-          </Link>
+        {authToken ? (
+            <div>
+              <img
+                src={login_icon}
+                alt="User Menu"
+                onClick={handleDropdownToggle} // Show dropdown when clicked
+              />
+              {isDropdownVisible && (
+                <div className="dropdown">
+                  <ul>
+                    <li><Link to="/profile">My Profile</Link></li>
+                    <li><Link to="/orders">My Orders</Link></li>
+                    <li><button onClick={handleLogout}>Logout</button></li>
+                  </ul>
+                </div>
+              )}
+            </div>
+          ) : (
+            <Link to="/login">
+              <img src={login_icon} alt="Login" />
+            </Link>
+          )}
           <Link to="/cart">
             <img src={cart_icon} alt="Cart" />
           </Link>
