@@ -10,6 +10,7 @@ import ForgotPassword from './Pages/ForgotPassword';
 import ResetPassword from './Pages/ResetPassword';
 import Aboutus from './Pages/Aboutus';
 import PlaceOrder from './Pages/PlaceOrder';
+import Orders from './Pages/Orders';
 import SearchBar from './Components/SearchBar/SearchBar'
 function App() {
   return (
@@ -41,6 +42,7 @@ function AppContent() {
         <Route path='/Aboutus' element={<Aboutus/>} />
         <Route path='/forgot-Password' element={<ForgotPassword/>} />
         <Route path='/cart/place-order' element={<PlaceOrder/>} />
+        <Route path='/orders' element={<Orders/>} />
         <Route path='/reset-password/:token' element={<ResetPassword/>} />
       </Routes>
     </div>

@@ -1,0 +1,123 @@
+.outer-order-layer{
+    display: flex;
+    flex-direction: column;
+    margin:5px;
+    min-height: 80vh;
+    border-top: 2px;
+    gap:8px;
+    display: flex;
+    padding: 45px 187px;
+}
+.orderdisplay{
+    padding: 9px;
+   
+    border-bottom: solid rgb(192, 192, 192) 2px;
+    color: rgb(82, 82, 82);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 18px;
+    gap:4px
+}
+.insideDisplay{
+    display: flex;
+    justify-content: flex-start;
+    gap:23px;
+    font-size:small ;
+}
+.insideDisplay img{
+    width: 110px;
+    height: 120px;              /* Slightly taller than square */
+    object-fit: cover;          /* Crop to fill the box while keeping aspect ratio */
+    border-radius: 8px;         /* Rounded corners for polish */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Optional: clean shadow */
+}
+.overall-dis{
+    display: flex;
+    flex-direction: column;
+    gap:13px;
+}
+.insideDisplay p{
+    font-size: 20px;
+}
+.item-name-order{
+    font-size: large;
+    margin: 0;     
+    font-weight: 500; 
+    line-height: 1.2; 
+}
+.description-item-order p {
+    margin: 0;
+  }
+  
+.description-item-order{
+    display: flex;
+ 
+    align-items: center;
+    gap:3px;
+    font-size: 0.9rem;
+    color: gray;
+}
+.all-description-order{
+    display: flex;
+    flex-direction: column;
+    gap:2px;
+}
+.datelabel {
+    font-size: 14px;   /* 👈 Change this to whatever size you want */
+    font-weight: 400;
+    color: #555;
+  }
+  
+.datevalue{
+    font-style: 100;
+    font-size: 15px;
+}
+.StateOrder{
+    
+    align-items: center; 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+.Boxes {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #28a745; /* Green circle */
+    display: inline-block;
+    margin-right: 6px;
+    vertical-align: middle;
+     align-items: center;
+  }
+  .state {
+    font-size: 14px;
+    font-weight: 500;
+    color: #666666;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .inner-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .track-btn {
+    background-color: transparent; /* No background */
+    color: #131414;                /* Text color */
+    border: 1px solid #808080;     /* Border visible */
+    height: 36px;
+    width: 120px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 0;
+  }
+  
+  .track-btn:hover {
+    background-color: #191919;
+    color: aliceblue;
+  }

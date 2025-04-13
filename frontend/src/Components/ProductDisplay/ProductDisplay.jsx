@@ -37,7 +37,7 @@ const ProductDisplay = (props) => {
       " {product.description}"
         </div>
        
-        <button onClick={()=>{addToCart(product.id)}}>Add to cart</button>
+        <button onClick={()=>{addToCart(product.id);console.log("Adding to cart:", product.id);}} >Add to cart</button>
         <p className='productdisplay-right-category'><span>Category: </span>{product.category.join(", ")}</p>
         <p className='productdisplay-right-category tag'><span>Tag: </span>{product.tags.join(", ")}</p>
         <div className="static-line"></div>
