@@ -42,7 +42,7 @@ function AppContent() {
         <Route path='/Aboutus' element={<Aboutus/>} />
         <Route path='/forgot-Password' element={<ForgotPassword/>} />
         <Route path='/cart/place-order' element={<PlaceOrder/>} />
-        <Route path='/orders' element={<Orders/>} />
+        <Route path='/cart/place-order/order' element={<Orders/>} />
         <Route path='/reset-password/:token' element={<ResetPassword/>} />
       </Routes>
     </div>

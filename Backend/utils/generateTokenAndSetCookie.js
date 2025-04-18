@@ -6,11 +6,12 @@ export const generateTokenAndSetCookie=(res,userId)=>{
      expiresIn:"7d",
     });
     res.cookie("token",token,{
-        httpOnly:true,//xss
+        httpOnly:false,//xss
         secure:process.env.NODE_ENV==="production",
         sameSite:"strict",//csrf
         maxAge:7*24*60*60*1000,
 
     });
-    return  token ;
+    // return res.json({ success: true, token: token });
+    return token;
 };

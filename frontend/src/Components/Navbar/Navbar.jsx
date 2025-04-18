@@ -6,31 +6,46 @@ import cart_icon from "../Assets/cart.png";
 import location from "../Assets/location.png";
 import login_icon from "../Assets/user.png"
 import {ShopContext} from '../../Context/ShopContext'
+import Cookies from 'js-cookie';
 import "./Navbar.css";
 
 const Navbar = () => {
-  const authToken = localStorage.getItem("auth-token");
+  const [authToken, setAuthToken] = useState(null);
   const [isDropdownVisible, setIsDropdownVisible] = useState(false); // State to toggle dropdown visibility
  
   const handleDropdownToggle = () => {
     setIsDropdownVisible((prevState) => !prevState); // Toggle dropdown visibility
   };
   useEffect(() => {
+    console.log(document.cookie);
     // Fetch the auth token from localStorage when the component mounts
-    const authToken = localStorage.getItem("auth-token");
+    const tokenFromCookie = Cookies.get("token");
 
     // Display the auth token in the console
-    if (authToken) {
-      console.log("Auth Token:", authToken);
+    if (tokenFromCookie) {
+      setAuthToken(tokenFromCookie);
     } else {
       console.log("No auth token found.");
     }
   }, []); 
-  const handleLogout = () => {
+  const handleLogout = async() => {
     // Clear auth token from local storage
-    localStorage.removeItem("authToken");
-    // Optionally, redirect to login page after logout
-    window.location.href = "/login";
+    try {
+      // Call backend logout route (optional but better for cookie-based auth)
+      await fetch("http://localhost:4000/api/auth/logout", {
+        method: "POST",
+        credentials: "include", // Important if using cookies
+      });
+  
+      // Clear token from local storage
+      Cookies.remove("token"); 
+      localStorage.removeItem("auth-token");
+  
+      // Redirect to login
+      window.location.href = "/login";
+    } catch (err) {
+      console.error("Logout failed", err);
+    }
   };
   const [menu, setMenu] = useState("Gifts");
   const [visible,setVisible]=useState(false)
@@ -45,7 +60,7 @@ const Navbar = () => {
         <img onClick={()=>{ setShowSearch(true); console.log('Search icon clicked!'); }} src={logos} alt="Search" className="search-icon" />
         <img src={location} alt="Search" className="location-icon" />
        
-        </div>
+        </div> 
         <div className="nav-logo">
           <img src={logo} alt="Logo" />
         </div>
@@ -61,7 +76,7 @@ const Navbar = () => {
                 <div className="dropdown">
                   <ul>
                     <li><Link to="/profile">My Profile</Link></li>
-                    <li><Link to="/orders">My Orders</Link></li>
+                    <li><Link to="/cart/place-order/order">My Orders</Link></li>
                     <li><button onClick={handleLogout}>Logout</button></li>
                   </ul>
                 </div>
