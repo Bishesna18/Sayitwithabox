@@ -67,11 +67,16 @@
     font-size: 14px;   /* 👈 Change this to whatever size you want */
     font-weight: 400;
     color: #555;
+    color: #989898;
   }
-  
+ .Date{
+    margin: 0;
+ } 
 .datevalue{
+    color: #989898;
     font-style: 100;
     font-size: 15px;
+    
 }
 .StateOrder{
     
@@ -120,4 +125,13 @@
   .track-btn:hover {
     background-color: #191919;
     color: aliceblue;
+  }
+  .payment{
+    margin-top: -2;
+    margin: 0;
+  }
+  .paymentlabel{
+    color: #989898;
+    font-style: 100;
+    font-size: 15px;
   }

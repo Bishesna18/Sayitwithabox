@@ -160,3 +160,38 @@
     background: white;
     margin-top: 3px;
 }
+.dropdown {
+    position: absolute;
+    top: 50px; /* Adjust based on your layout */
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .dropdown ul li {
+    margin: 10px 0;
+  }
+  
+  .dropdown ul li a,
+  .dropdown ul li button {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 5px;
+    display: block;
+  }
+  
+  .dropdown ul li button {
+    background: none;
+    border: none;
+  }

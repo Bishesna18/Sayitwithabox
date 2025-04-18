@@ -1,6 +1,7 @@
 const port=4000;
 import dotenv from 'dotenv';
 dotenv.config();
+
 import express from "express";
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
@@ -14,9 +15,11 @@ import authRoutes from "./routes/auth.route.js";
 import productRoute from "./routes/productRoute.js";
 import connectCloudinary from './config/cloudinary.js';
 import cartRouter from './routes/cart.route.js';
+import orderRouter from './routes/orderRoute.js';
 const app=express();
+
 app.use(express.json());
-app.use(cors({ origin:  ["http://localhost:3000", "http://localhost:5174"]  })); // Specify the frontend URL
+app.use(cors({ origin:  ["http://localhost:3000", "http://localhost:5174"] ,credentials: true,  })); // Specify the frontend URL
 
 
 //database connection with mdb:
@@ -33,6 +36,7 @@ app.get("/",(req,res)=>{
 app.use('/api/auth',authRoutes)
 app.use('/api/product',productRoute)
 app.use('/api/cart',cartRouter)
+app.use('/api/order',orderRouter)
 app.listen(port,(error)=>{
     if(!error){
         connectDB();

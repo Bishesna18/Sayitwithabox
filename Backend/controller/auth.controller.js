@@ -30,17 +30,18 @@ export const signup=async(req,res)=>{
     await user.save();
     //jwt
 
-    generateTokenAndSetCookie(res,user._id);
+    const token = generateTokenAndSetCookie(res, user._id);
 await sendVerificationEmail(user.email,verificationToken);
 
-    // res.status(201).json({
-    //     success:true,
-    //     message:"User created successfully",
-    //     user:{
-    //         ...user._doc,
-    //         password:undefined,
-    //     },
-    // });
+    res.status(201).json({
+        success:true,
+        message:"User created successfully",
+        token,
+        user:{
+            ...user._doc,
+            password:undefined,
+        },
+    });
     }catch(error){
     res.status(400).json({success:false,message:error.message});
     }
@@ -64,7 +65,7 @@ export const verifyEmail=async(req,res)=>{
         await user.save();
 
         await sendwelcomeEmail(user.email,user.name);
-         res.status(200).json({
+        return  res.status(200).json({
             success:true,
             message:"Email verified successfully",
             user:{
@@ -103,17 +104,18 @@ export const login=async(req,res)=>{
     }
 
     // Generate a token and set it in the cookie
-    generateTokenAndSetCookie(res, user._id);
+    const token=generateTokenAndSetCookie(res, user._id);
     user.Date=new Date();
     await user.save();
-    // res.status(200).json({
-    //   success: true,
-    //   message: "Login successful",
-    //   user: {
-    //     ...user._doc,
-    //     password:undefined,
-    //   },
-    // });
+    return res.status(200).json({
+      success: true,
+      message: "Login successful",
+     token,
+      // user: {
+      //   ...user._doc,
+      //   password:undefined,
+      // },
+    });
   } catch (error) {
     console.error("Error during login:", error);
    return res.status(500).json({ success: false, message: "Internal server error" });
@@ -156,7 +158,7 @@ export const resetPassword=async(req,res)=>{
     });
     if(!user){
       return res.status(400).json({success:false,message:"Invalid or expired reset token"})
-    }
+    } 
     console.log("User found, updating password.");
 
 
