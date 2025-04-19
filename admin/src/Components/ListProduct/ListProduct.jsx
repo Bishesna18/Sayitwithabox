@@ -11,6 +11,7 @@ const ListProduct = ({token}) => {
     try{
     const response=await axios.get('http://localhost:4000/api/product/list')
     if (response.data.success){
+      console.log(response.data.products)
       setList(response.data.products);
     }
     else{

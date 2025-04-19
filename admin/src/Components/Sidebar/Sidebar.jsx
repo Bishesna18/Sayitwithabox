@@ -18,7 +18,7 @@ const Sidebar = (token={token}) => {
        <p>Product List</p>
       </div>
       </Link>
-      <Link to={'/order-list'} token={token} style={{textDecoration:"none"}}>
+      <Link to={'/order/list'} token={token} style={{textDecoration:"none"}}>
       <div className='sidebar-item'>
        <img src={List_Product_icon}alt=""/> 
        <p>Order List</p>
