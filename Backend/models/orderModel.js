@@ -5,7 +5,9 @@ const orderSchema=new mongoose.Schema({
     items:{type:Array, required:true},
     amount:{type:Number, required:true},
     address:{
-        
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    phone:{type: String, required: true},
     street: { type: String, required: true },
     city: { type: String, required: true },
     state: { type: String, required: true },

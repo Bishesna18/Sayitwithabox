@@ -5,6 +5,7 @@ import Login from './Components/login/login'
 import {Routes,Route} from 'react-router-dom'
 import AddProduct from './Components/AddProduct/AddProduct'
 import ListProduct from './Components/ListProduct/ListProduct'
+import Order from './Components/order/Order';
 export const backendUrl = import.meta.env.VITE_BACKEND_URL;
 import { ToastContainer} from 'react-toastify';
 const App = () => {
@@ -18,14 +19,14 @@ const App = () => {
       {token===""?  <Login setToken={setToken}/>:<>
     
       <Navbar setToken={setToken}/>
-      <Admin/>
+      <Admin  token={token}/>
 
-     <Routes>
-{/*       
+     {/* <Routes>
+      
       <Route path='/addproduct' element= {<AddProduct token={token}/>}/>
       <Route path='/listproduct' element= {<ListProduct token={token}/>}/>
-      <Route path='/order' element= {<ListProduct token={token}/>}/> */}
-     </Routes>
+      <Route path='/order/list' element={<Order token={token}/>}/>
+     </Routes> */}
      </>
 }
     </div>
