@@ -67,15 +67,26 @@ font-family: "Playfair Display", serif;
    font-weight:600;
    font-weight:500;
     cursor:pointer;
+   
 
+}
+.loginsignup-forgot {
+ 
+  display: flex;
+  justify-content: flex-end;
+  
 }
 .loginsignup-forgot span{
   color:#d9b3b3;
    font-weight:600;
    font-weight:500;
     cursor:pointer;
-    float: right;
+    /* float: right; */
     margin-bottom:-16px;
+    height: 30px;
+    /* width: 100%; */
+
+
 }
 .loginsignup-agree{
    display:flex;

@@ -12,6 +12,8 @@ import Aboutus from './Pages/Aboutus';
 import PlaceOrder from './Pages/PlaceOrder';
 import Orders from './Pages/Orders';
 import SearchBar from './Components/SearchBar/SearchBar'
+import Verify from './Pages/Verify';
+import Footer from './Components/Footer/Footer';
 function App() {
   return (
     <BrowserRouter>
@@ -22,7 +24,7 @@ function App() {
 
 function AppContent() {
   const location = useLocation();
-  const hideNavbarRoutes = ['/login']; // Add routes where navbar should be hidden
+  const hideNavbarRoutes = ['/login', '/reset-password/:token']; // Add routes where navbar should be hidden
 
   return (
     <div>
@@ -43,8 +45,10 @@ function AppContent() {
         <Route path='/forgot-Password' element={<ForgotPassword/>} />
         <Route path='/cart/place-order' element={<PlaceOrder/>} />
         <Route path='/cart/place-order/order' element={<Orders/>} />
+        <Route path='/verify' element={<Verify/>} />
         <Route path='/reset-password/:token' element={<ResetPassword/>} />
       </Routes>
+      <Footer/>
     </div>
   );
 }

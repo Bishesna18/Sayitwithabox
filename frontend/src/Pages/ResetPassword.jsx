@@ -55,6 +55,7 @@ const ResetPassword = () => {
   return (
     
     <div className='ResetPassword'> 
+	<div className="outer-form">
         <h2>Forgot Password</h2>
         <input type="text" className="new password"  placeholder="Enter your new password" value={password}
 						onChange={(e) => setPassword(e.target.value)}
@@ -72,6 +73,7 @@ const ResetPassword = () => {
             onClick={handleSubmit}>
 						{isLoading ? "Resetting..." : "Set New Password"}
 </button>
+</div>
     </div>
   )
 }

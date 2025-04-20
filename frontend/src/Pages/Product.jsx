@@ -9,7 +9,10 @@ const Product = () => {
   const {all_product}=useContext(ShopContext);
   const {productId}=useParams();
   const location = useLocation();
+  console.log(" all_product:", all_product);
+  console.log(" productId from URL:", productId);
   const product=all_product.find((e)=>e.id===Number(productId));
+  console.log("📦 Matched product:", product);
   const openedCategory = location.state?.category || "Unknown"; // Get category from state or fallback
   return (
     <div>
