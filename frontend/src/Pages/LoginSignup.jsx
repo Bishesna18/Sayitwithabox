@@ -12,6 +12,7 @@ const LoginSignup = () => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
+    confirmPassword: "", 
     email: "",
     verificationCode:""
   });
@@ -87,6 +88,15 @@ console.log("Response status:", response.status);
   const signup = async () => {
     if (!formData.email || !formData.password || !formData.username) {
       alert("Please fill in all fields");
+      return;
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+    if (formData.password.length < 8) {
+      alert("Password must be at least 8 characters long");
       return;
     }
     if (!isChecked) {
@@ -181,9 +191,11 @@ console.log("Response status:", response.status);
             {state === "Sign Up" && <input name='username' value={formData.username} onChange={changeHandler} type="text" placeholder='Your Name' />}
             <input name='email' value={formData.email} onChange={changeHandler} type="email" placeholder='Email Address' />
             <input name='password' value={formData.password} onChange={changeHandler} type="password" placeholder='Password' />
+            {state === "Sign Up" && (
+  <input name="confirmPassword" value={formData.confirmPassword} onChange={changeHandler} type="password" placeholder="Confirm Password" />)}
           </div>
           {state === "Login" && <p className="loginsignup-forgot"><span onClick={() => { setState("ForgotPassword"); }}>Forgot Password?</span></p>}
-          <button type="button" onClick={(e) => { e.preventDefault(); state === "Login" ? login() : signup(); }}>Continue</button>
+          <button type="button" onClick={(e) => { e.preventDefault(); state === "Login" ? login() : signup(); }}>{state === "Login" ? "Login" : "Sign up"}</button>
         </form>
 
         {state === "Sign Up" ?

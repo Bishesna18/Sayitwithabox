@@ -39,6 +39,10 @@ const ResetPassword = () => {
 			alert("Passwords do not match");
 			return;
 		}
+		if (password.length < 8) {
+			alert("Password must be at least 8 characters long");
+			return;
+		  }
 		try {
 			await resetPassword(token, password);
 
