@@ -5,7 +5,7 @@ const productSchema = new mongoose.Schema({
         image: { type: [String], required: true },
         category: { type: [String], required: true }, // Fixed incorrect data type
         description: { type: String,  default: "" }, // Added for detailed item descriptions
-        tags: [String], // Added for AI-friendly features like keywords
+        tags: { type: [String], required: true }, // Added for AI-friendly features like keywords
         personalization_options: { type: Array, default: [] }, // Added for customization options
         occasion: { type: String }, // Added to categorize products by events
         new_price: { type: Number, required: true },

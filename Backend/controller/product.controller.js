@@ -1,7 +1,7 @@
 import {v2 as cloudinary} from 'cloudinary'
 import Product from '../models/productModel.js'
 import mongoose from "mongoose";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid'; 
 const addProduct=async(req,res)=>{
    try {
    const{name,category, description,tags, personalization_options, occasion, new_price, old_price, available, rating, sold_count, delivery_time}=req.body
@@ -17,6 +17,7 @@ const addProduct=async(req,res)=>{
       })
    )
    const finalCategory = typeof category === 'string' ? category.split(',') : category; 
+   const finalTags = typeof tags === 'string' ? tags.split(',') : tags;
    console.log("Processed Category:", finalCategory);
 const products = await Product.find(); // Find all products to get the last product's id
 let id;
@@ -34,7 +35,7 @@ id = parseInt(id);
    category:finalCategory, 
    new_price,
    old_price,
-   tags:Array.isArray(tags) ? tags : [tags],
+   tags:finalTags,
    image:imagesUrl,
    date:Date.now(),
    available:available !== undefined ? (available.toLowerCase() === "true" ) : true, 

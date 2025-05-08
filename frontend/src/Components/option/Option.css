@@ -93,7 +93,7 @@
 .record-opt{
     height: auto;
     width: 55%;
-    background-color: white; /* Softer color instead of dark gray */
+    background-color:#f9f8f6; /* Softer color instead of dark gray */
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;

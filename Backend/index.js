@@ -1,7 +1,7 @@
 const port=4000;
 import dotenv from 'dotenv';
 dotenv.config();
-
+import Stripe from 'stripe';
 import express from "express";
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
@@ -19,6 +19,7 @@ import orderRouter from './routes/orderRoute.js';
 const app=express();
 
 app.use(express.json());
+
 app.use(cors({ origin:  ["http://localhost:3000", "http://localhost:5174"] ,credentials: true,  })); // Specify the frontend URL
 
 
@@ -47,6 +48,7 @@ app.listen(port,(error)=>{
         console.log("Error:"+error);
     }
 })
+
 //Image storage engine
 // const storage = multer.diskStorage({
 //     destination:'./upload/images',

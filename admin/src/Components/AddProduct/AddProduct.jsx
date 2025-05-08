@@ -31,7 +31,14 @@ const categoryOptions = [
   { value: "Flower_and_Wine", label: "Flower and Wine" },
   { value: "Chocolate_and_Wine", label: "Chocolate and Wine" },
 ];
-
+const tagOptions = [
+  { value: "Romantic", label: "Romantic" },
+  { value: "Luxury", label: "Luxury" },
+  { value: "Minimalist", label: "Minimalist" },
+  { value: "Elegant", label: "Elegant" },
+  { value: "Personalized", label: "Personalized" },
+  { value: "Surprise", label: "Surprise" },
+];
 const AddProduct = () => {
   
   const [image1,setImage1]=useState(false)
@@ -39,11 +46,13 @@ const AddProduct = () => {
   const [image3,setImage3]=useState(false)
   const [image4,setImage4]=useState(false)
   const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedTags, setSelectedTags] = useState([]);
   // const [description,setDescription]=useState("");
   const [productDetails,setProductDetails]=useState({
     name:"",
     image:"",
     category:[],
+    tags: [],
     new_price:"",
     old_price:""
   })
@@ -52,7 +61,7 @@ const AddProduct = () => {
     setProductDetails({...productDetails,[e.target.name]:e.target.value})
   }
   const Add_product=async()=>{
- 
+   
   console.log(productDetails);
   let product = { ...productDetails }; // Clone product details
 try{
@@ -67,6 +76,7 @@ try{
   formData.append("new_price", productDetails.new_price);
   formData.append("old_price", productDetails.old_price);
   formData.append("category",productDetails.category); // Convert array to JSON string
+  formData.append("tags", productDetails.tags);
   formData.append("description", productDetails.description); 
  const response=await axios.post("http://localhost:4000/api/product/add",formData)
  console.log(response.data)
@@ -105,6 +115,7 @@ try{
   onChange={(options) => {
     console.log("Selected Categories: ", options);
 
+
     setSelectedCategories(options); // Update state with selected options
     setProductDetails((prev) => ({
       ...prev,
@@ -115,6 +126,23 @@ try{
   className="add-product-selector"
   classNamePrefix="select"
 />
+<p>Tags</p>
+  <Select
+    name="tags"
+    options={tagOptions}
+    isMulti
+    value={selectedTags}
+    onChange={(options) => {
+      console.log('Tags:', productDetails.tags); // Log tags
+      setSelectedTags(options);
+      setProductDetails((prev) => ({
+        ...prev,
+        tags: options ? options.map((opt) => opt.value) : [],
+      }));
+    }}
+    className="add-product-selector"
+    classNamePrefix="select"
+  />
       </div>
       <div className="addproduct-itemfield">
         <p>Description</p>
